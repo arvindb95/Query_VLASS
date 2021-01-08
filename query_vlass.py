@@ -3,7 +3,8 @@ import numpy as np
 from astropy import units as u
 from astropy.coordinates import SkyCoord
 from astroquery.cadc import Cadc
-import os
+
+from urllib.request import urlretrieve
 
 parser = argparse.ArgumentParser(prefix_chars='@')
 parser.add_argument("ra",help="RA of the source in 00h00m00.00s format",type=str)
@@ -30,11 +31,11 @@ if (len(image_list) > 1):
     filename = sel_image.split("/")[-1].split("&")[0][21:]
     print(filename)
     print("Downloading VLASS image : ",filename)
-    os.system("wget -O "+filename+" "+sel_image)
+    urlretrieve(sel_image, filename)
 else :
     sel_image = image_list[0]
     filename = sel_image.split("/")[-1].split("&")[0][21:]
     print(filename)
     print("Downloading VLASS image : ",filename)
-    os.system("wget -O "+filename+" "+sel_image)
+    urlretrieve(sel_image, filename)
 
