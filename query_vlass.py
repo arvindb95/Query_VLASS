@@ -18,7 +18,7 @@ radius = args.radius * u.arcmin
 
 cadc = Cadc()
 coords = ra + " " + dec
-results = cadc.query_region(coords, radius, collection="VLASS")
+results = cadc.query_region(coords, radius=radius, collection="VLASS")
 image_list = cadc.get_image_list(results, coords, radius)
 
 if len(image_list) > 1:
