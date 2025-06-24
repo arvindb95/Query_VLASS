@@ -4,7 +4,13 @@ from astropy import units as u
 from astropy.coordinates import SkyCoord
 from astroquery.cadc import Cadc
 
+from bs4 import XMLParsedAsHTMLWarning
+import warnings
+
+warnings.filterwarnings("ignore", category=XMLParsedAsHTMLWarning)
+
 from urllib.request import urlretrieve
+
 
 parser = argparse.ArgumentParser(prefix_chars="@")
 parser.add_argument("ra", help="RA of the source in 00h00m00.00s format", type=str)
